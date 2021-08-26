@@ -1,0 +1,82 @@
+.maintitle{
+  color: gray;
+}
+
+
+
+#title{
+  margin: 0 3%;
+  width: 40%;
+  font-size: 80%;
+  background-color: #e1efff;
+  box-shadow: 3px 3px 3px 3px #555;
+}
+
+
+textarea {
+  margin: 10px 3%;
+  width: 95%;
+  height: 100px;
+  font-size: 80%;
+  box-shadow: 3px 3px 3px 3px #555;
+  background-color: rgb(241, 239, 239);}
+
+
+
+  table {
+    margin: 20px 3%;
+    border: 1px solid #8dc3f5;
+    width: 96%;
+  }
+  th {
+    width: 30%;
+    font-size: 24px;
+    background-color: #d0e7fc;
+    border-bottom: 1px solid #8dc3f5;
+  }
+  td {
+    font-size: 16px;
+    background-color: rgb(241, 239, 239);
+    border-bottom: 1px solid #8dc3f5;
+  }
+
+
+.pickup{
+ font-size: 50px;
+ color: gray;
+
+}
+
+/* 以下動画を最初はdisplay noneで隠しておく */
+.shortfilm1{
+  display: none;
+}
+
+
+.shortfilm2{
+  display: none;
+}
+
+.shortfilm3{
+  display: none;
+}
+
+
+.shortfilm4{
+  display: none;
+}
+
+
+.shortfilm5{
+  display: none;
+}
+
+
+.shortfilm6{
+  display: none;
+}
+
+
+.shortfilm7{
+  display: none;
+}

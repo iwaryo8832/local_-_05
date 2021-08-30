@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>myMemoPad</title>
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/sample.css">
+</head>
+
+
+
+<body>
+
+    <header>
+
+    
+        <h1 class="maintitle">Short  Film  Diary</h1>
+    <div class="main">
+        <img class="mainimg" src="img/eiga1.jpg" alt="">
+    </div>
+
+    </header>
+
+    <main>
+        <div class="z">
+            <div class="a">
+                <p class="date">撮影日</p>
+                <div>
+                    <select name="" id="year"></select>
+                    <select name="" id="month"></select>
+                    <select name="" id="date"></select>
+                </div>
+            </div>
+
+            <div class="b">
+                <p class="date">タイトル</p>
+                <input id="title" type="text">
+            </div>
+
+            <div class="c">
+                <p class="date">本編</p>
+                <textarea id="content"></textarea>
+            </div>
+
+
+            <p class="date">今の気持ちは？？</p>
+            
+            <p>
+                <input type="checkbox" name="toi" value="1" multiple><span id="toi1"></span>
+                <input type="checkbox" name="toi" value="2" multiple><span id="toi2"></span>
+                <input type="checkbox" name="toi" value="3" multiple><span id="toi3"></span>
+                <input type="checkbox" name="toi" value="4" multiple><span id="toi4"></span>
+                <input type="checkbox" name="toi" value="5" multiple><span id="toi5"></span>
+                <input type="checkbox" name="toi" value="6" multiple><span id="toi6"></span>
+                <input type="checkbox" name="toi" value="7" multiple><span id="toi7"></span>
+            </p>
+
+            <button id="save">記録する</button>
+        </div>
+
+
+        <h1 class="pastdiary">過去の日記</h1>
+
+        <div class="table">
+            <table id="list"></table>
+        </div>
+
+        
+        <h1 class="pickup">忙しいあなたにshortな娯楽を</h1>
+        <p class="sub">過去の日記の感情を分析し、あなたにぴったりのショートフィルムをお届けします。</p>
+
+        <!-- 映写機 -->
+        <div id="projectorContainer">
+            <div class="projectorLight">
+                <div class="cover"></div>
+                <div class="cover"></div>
+            </div>
+    
+            <div class="projectorBody">
+                <div class="lensHold"></div>
+                <div class="lens"></div>
+            </div>
+            
+            <div class="filmDisk" id="film1">
+                <div class="fdBack">
+                    <div class="fdFilm"></div>
+                    <div class="fdBar"></div>
+                    <div class="fdBar2"></div>
+                    <div class="fdCover"></div>
+                </div>
+            </div>
+    
+            <div class="filmDisk" id="film2">
+                <div class="fdBack">
+                    <div class="fdFilm"></div>
+                    <div class="fdBar"></div>
+                    <div class="fdBar2"></div>
+                    <div class="fdCover"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ボタン -->
+        <div id="btn">
+           <button class="start">Short Film for you</button>
+        </div>
+
+
+
+        <div class="shortfilmlist">
+            <div class="shortfilm1"><iframe width="560" height="315" src="https://www.youtube.com/embed/FIO3MQTYU4c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <div class="shortfilm2"><iframe width="560" height="315" src="https://www.youtube.com/embed/SkLVQx0F13A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <div class="shortfilm3"><iframe width="560" height="315" src="https://www.youtube.com/embed/X56C72FxQO0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <div class="shortfilm4"><iframe width="560" height="315" src="https://www.youtube.com/embed/BDpnoH6_riQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <div class="shortfilm5"><iframe width="560" height="315" src="https://www.youtube.com/embed/lmHSjTGh06Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <div class="shortfilm6"><iframe width="560" height="315" src="https://www.youtube.com/embed/npZzxda5YtU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <div class="shortfilm7"><iframe width="560" height="315" src="https://www.youtube.com/embed/EpYg_WXuKTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        </div>
+      
+
+
+        <h1 class="pickup">上映開始</h1>
+
+    
+
+
+
+    </main>
+
+    <footer></footer>
+
+    <script>
+
+    // 年を選択
+    let str ="";
+
+    for(let i =1970; i<2030; i++){
+
+        str+= `<option>${i}</option>`;
+    }
+
+    $("#year").html(str);
+
+
+
+    // 月を選択
+    let strr ="";
+
+  
+
+    for(let j =1; j<13; j++){
+
+    strr+= `<option>${j}</option>`;
+    }
+
+    $("#month").html(strr);
+
+
+     // 日付を選択
+     let strrr ="";
+
+    for(let i =1; i<32; i++){
+
+    strrr+= `<option>${i}</option>`;
+    }
+
+    $("#date").html(strrr);
+
+
+
+    // 日記を書いた時の気持ちの選択肢表示
+
+    const option = ["うれしい","悲しい","しみじみ","怒り","楽しい","思慮にふける","マンネリ"];
+    $("#toi1").html([option[0]]);
+    $("#toi2").html([option[1]]);
+    $("#toi3").html([option[2]]);
+    $("#toi4").html([option[3]]);
+    $("#toi5").html([option[4]]);
+    $("#toi6").html([option[5]]);
+    $("#toi7").html([option[6]]);
+
+
+    // ↓日記を書いてボタンを押したときに内容を保存↓
+    // 保存する内容は
+    // １．日付
+    // ２．タイトル
+    // ３．日記の内容
+    // ４．チェックボックスでチェックした感情
+
+
+    // ★★★★ここから下でチェックボックスを保存★★★★
+
+
+
+    // 保存ボタンを押したら以下発動
+    $("#save").on("click",function(){
+
+    // name=toiのチェックボックスをelementsに入れる
+    const elements = document.getElementsByName("toi");
+
+    // localStorageに送る用の箱
+    var checked=[];
+
+     // チェックが入っているボタンのみvalueを取得する
+    // チェックボックスを一つずつチェックが入っているか確認し、入っていれば、配列chekedにpushで入れていく
+
+    for (let i=0; i<elements.length; i++){
+        if (elements[i].checked){
+
+          checked.push(elements[i].value);
+
+          const key = {
+        data1: $("#year").val(),
+        data2: $("#month").val(),
+        data3: $("#date").val(),
+        }
+
+        const value = {
+        data1: $("#title").val(),
+        data2: $("#content").val(),
+        data3: $(checked),
+        }
+       
+        // localStorageに保存
+        localStorage.setItem(JSON.stringify(key),JSON.stringify(value));
+        }
+    }
+
+    // 保存したものはページ内で更新して表示していく
+    const html='<tr><th>'+$("#year").val()+"年"+$("#month").val()+"月"+$("#date").val()+"日"+":"+$("#title").val()+'</th><td>'+$("#content").val()+'</td></tr>';
+    $("#list").append(html);
+
+});
+
+
+    //  localStorageから押されたvalueの値を取得し入れる用の箱
+     var object = [];
+    
+
+     const t=[];
+
+
+    // 以下ページ読み込み時にlocalstorageよりデータを取得し過去の日記の履歴を表示する
+
+    for(let i = 0 ; i < localStorage.length ; i++) {
+
+    let key = localStorage.key(i);
+    var value =JSON.parse(localStorage.getItem(key));
+    object.push(value);
+
+    var key2 =JSON.parse(key);
+
+
+    const html='<tr><th>'+(key2.data1)+"年"+(key2.data2)+"月"+(key2.data3)+"日"+'</th><td>'+(value.data1)+":"+(value.data2)+'</td></tr>';
+    $("#list").append(html);
+
+
+     // ★★以下困っていること★★
+    
+    // 変数objectは上段で定義しています。
+
+
+// listにobjectからdata3のみを抽出
+const list = object.map(obj => obj.data3);
+
+console.log(list);
+
+// data3の（value）だけを抜き出し、一つの配列にする
+let keyArray = Object.values(list[i]);
+keyArray.pop() ;
+t.push(keyArray);
+
+}
+
+
+
+
+// 現在、多次元配列となっているtの中身を完全な配列に変換する↓
+// 変換したものは新たな配列bに入れる。
+const b =[];
+
+     for(let i = 0 ; i < t.length ; i++) {
+
+        for(let a = 0 ; a < t[i].length ; a++) {
+        b.push(t[i][a]);
+        
+    }
+    }
+
+console.log(b);
+
+
+// ここから下では配列b（過去にチェックしたチェックボックスの値）のうち最頻値を求める
+//    （まだ、解読できてなくてコピペです）
+
+    Array.prototype.mode = function () {
+    if (this.length === 0){
+        //配列の個数が0だとエラーを返す。
+        throw new Error("配列の長さが0のため最頻値が計算できません");
+        //nullを返しても困らない時(配列の中にnullが無い時)はnullを返すように実装しても良い。
+        //return null
+    }
+    //回数を記録する連想配列
+    var counter = {}
+    //本来の値を入れた辞書
+    var nativeValues = {}
+
+    //最頻値とその出現回数を挿入する変数
+    var maxCounter = 0;
+    var maxValue = null;
+
+    for (var i = 0; i < this.length; i++) {
+        //counterに存在しなければ作る。keyは型を区別する
+        if (!counter[this[i] + "_" + typeof this[i]]) {
+            counter[this[i] + "_" + typeof this[i]] = 0;
+        }
+        counter[this[i] + "_" + typeof this[i]]++;
+        nativeValues[this[i] + "_" + typeof this[i]] = this[i];
+
+    }
+    for (var j = 0; j < Object.keys(counter).length; j++) {
+        key = Object.keys(counter)[j];
+        if (counter[key] > maxCounter) {
+            maxCounter = counter[key];
+            maxValue = nativeValues[key]
+        }
+    }
+    return maxValue
+
+}
+
+
+console.log(b.mode());
+
+
+// ボタンを押すと以下過去の日記の感情で最も多かった感情に合わせたショートフィルムがレコメンドされる。
+
+$(".start").on("click",function(){
+
+if(b.mode()==1){
+$(".shortfilm1").show();
+
+}else if(b.mode()==2){
+$(".shortfilm2").show();
+
+
+}else if(b.mode()==3){
+$(".shortfilm3").show();
+
+
+}else if(b.mode()==4){
+$(".shortfilm4").show();
+
+
+}else if(b.mode()==5){
+$(".shortfilm5").show();
+
+
+}else if(b.mode()==6){
+$(".shortfilm6").show();
+
+
+}else if(b.mode()==7){
+$(".shortfilm7").show();
+
+}else{
+
+    return;
+}
+
+scrollBy(0, 500);
+
+})
+
+
+    </script>
+</body>
+
+</html>
+
+
+
+
